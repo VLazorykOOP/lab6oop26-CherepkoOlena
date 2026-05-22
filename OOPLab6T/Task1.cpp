@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Task1.h"
 
+// комплексна іерархія
 
 class Class1 { int data1; };
 class Class2 : public Class1 { int data2; };
@@ -21,8 +22,6 @@ class VirtualClass6 : virtual public VirtualClass3 { int data6; };
 class VirtualClass7 : virtual public VirtualClass4, virtual public VirtualClass6 { int data7; };
 
 void task1() {
-    Class7 class7 = Class7();
-    VirtualClass7 virtual7 = VirtualClass7();
 
     std::cout << "Non-Virtual Class" << std::endl;
     std::cout << "Size of Class1: " << sizeof(Class1) << std::endl;
@@ -32,7 +31,7 @@ void task1() {
     std::cout << "Size of Class5: " << sizeof(Class5) << std::endl;
     std::cout << "Size of Class6: " << sizeof(Class6) << std::endl;
     std::cout << "Size of Class7: " << sizeof(Class7) << std::endl;
-    std::cout << "Class structure size : " << sizeof(class7) << std::endl;
+    std::cout << "Class structure size : " << sizeof(Class7) << std::endl;
 
     std::cout << std::endl << "VirtualClass" << std::endl;
     std::cout << "Size of VirtualClass1: " << sizeof(VirtualClass1) << std::endl;
@@ -42,5 +41,5 @@ void task1() {
     std::cout << "Size of VirtualClass5: " << sizeof(VirtualClass5) << std::endl;
     std::cout << "Size of VirtualClass6: " << sizeof(VirtualClass6) << std::endl;
     std::cout << "Size of VirtualClass7: " << sizeof(VirtualClass7) << std::endl;
-    std::cout << "VirtualClass structure size : " << sizeof(virtual7) << std::endl;
+    std::cout << "VirtualClass structure size : " << sizeof(VirtualClass7) << std::endl;
 }

@@ -12,54 +12,45 @@ class Human
     vector<string> knownHumans = vector<string>();
     string name;
 public:
-    Human(string& name) : name(name)
-    {
+    Human(string& name) : name(name) {
         cout << "Created Human" << endl;
     }
 
-    ~Human()
-    {
+    ~Human() {
         cout << "Removed Human" << endl;
     }
 
-    string& getName()
-    {
+    string& getName() {
         return name;
     }
 
-    vector<string> getKnownHumans()
-    {
+    vector<string> getKnownHumans() {
         return knownHumans;
     }
 
-    void addFriend(string& otherName)
-    {
+    void addFriend(string& otherName) {
         knownHumans.push_back(otherName);
     }
 
-    bool knowsHuman(const std::string& otherName) {
-        const std::vector<std::string>& known = getKnownHumans();
-        return std::find(known.begin(), known.end(), otherName) != known.end();
+    bool knowsHuman(const string& otherName) {
+        const vector<string>& known = getKnownHumans();
+        return find(known.begin(), known.end(), otherName) != known.end();
     }
 
     virtual void reaction(Human& other) = 0;
 };
 
-class Woman : public Human
-{
+class Woman : public Human {
 public:
-    Woman(string& name) : Human(name)
-    {
+    Woman(string& name) : Human(name) {
         cout << "Created Woman" << endl;
     }
 
-    ~Woman()
-    {
+    ~Woman() {
         cout << "Destroyed Woman" << endl;
     }
 
-    void reaction(Human& other) override
-    {
+    void reaction(Human& other) override {
         if (knowsHuman(other.getName())) {
             cout << "Oh, " << other.getName() << ", Hello friend!" << endl;
         }
@@ -67,38 +58,34 @@ public:
         {
             cout << "Hello, who are you?" << endl;
             addFriend(other.getName());
+            other.addFriend(getName());
         }
     }
 };
 
-class YoungMan : public Human
-{
+class YoungMan : public Human {
 public:
-    YoungMan(string& name) : Human(name)
-    {
+    YoungMan(string& name) : Human(name) {
         cout << "Created YoungMan" << endl;
     }
 
-    ~YoungMan()
-    {
+    ~YoungMan() {
         cout << "Destroyed YoungMan" << endl;
     }
 
-    void reaction(Human& other) override
-    {
+    void reaction(Human& other) override {
         if (knowsHuman(other.getName())) {
             cout << "Oh, " << other.getName() << ", Hello bro!" << endl;
         }
-        else
-        {
+        else {
             cout << "Hello, " << other.getName() << endl;
             addFriend(other.getName());
+            other.addFriend(getName());
         }
     }
 };
 
-void task2()
-{
+void task2() {
     cout << "Give a name to a Young Man" << endl;
 
     string youngManName;

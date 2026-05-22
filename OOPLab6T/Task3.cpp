@@ -30,7 +30,7 @@ public:
     virtual void boardPassengers() = 0;
 };
 
-class Bus : virtual public Car, virtual public PassengerTransport {
+class Bus : public Car, public PassengerTransport {
 public:
     Bus() {
         cout << "Created Bus" << endl;
